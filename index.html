@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Texture Studio - Generate Amazing Textures</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">AI Texture Studio</h1>
+                <p class="app-tagline">Generate Amazing Textures with AI</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Control Panel -->
+            <aside class="control-panel">
+                <div class="control-section">
+                    <h3>Texture Type</h3>
+                    <select id="textureType" class="form-control">
+                        <option value="Wood">Wood</option>
+                        <option value="Stone">Stone</option>
+                        <option value="Fabric">Fabric</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Marble">Marble</option>
+                        <option value="Clouds">Clouds</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Water">Water</option>
+                        <option value="Abstract">Abstract</option>
+                    </select>
+                </div>
+
+                <div class="control-section">
+                    <h3>Presets</h3>
+                    <select id="presets" class="form-control">
+                        <option value="">Select a preset...</option>
+                        <option value="rough-wood">Rough Wood</option>
+                        <option value="smooth-marble">Smooth Marble</option>
+                        <option value="rusted-metal">Rusted Metal</option>
+                        <option value="soft-fabric">Soft Fabric</option>
+                        <option value="ancient-stone">Ancient Stone</option>
+                    </select>
+                </div>
+
+                <div class="control-section">
+                    <h3>Parameters</h3>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="scale">Scale</label>
+                        <input type="range" id="scale" class="slider" min="0.01" max="0.2" step="0.01" value="0.05">
+                        <span class="slider-value" id="scaleValue">0.05</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="roughness">Roughness</label>
+                        <input type="range" id="roughness" class="slider" min="0.1" max="1.0" step="0.1" value="0.5">
+                        <span class="slider-value" id="roughnessValue">0.5</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="octaves">Octaves</label>
+                        <input type="range" id="octaves" class="slider" min="1" max="8" step="1" value="4">
+                        <span class="slider-value" id="octavesValue">4</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="persistence">Persistence</label>
+                        <input type="range" id="persistence" class="slider" min="0.1" max="1.0" step="0.1" value="0.5">
+                        <span class="slider-value" id="persistenceValue">0.5</span>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Colors</h3>
+                    <div class="color-controls">
+                        <div class="form-group">
+                            <label class="form-label" for="color1">Primary Color</label>
+                            <input type="color" id="color1" class="color-picker" value="#8B4513">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="color2">Secondary Color</label>
+                            <input type="color" id="color2" class="color-picker" value="#D2691E">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Algorithm</h3>
+                    <select id="algorithm" class="form-control">
+                        <option value="perlin">Perlin Noise</option>
+                        <option value="simplex">Simplex Noise</option>
+                        <option value="voronoi">Voronoi Cells</option>
+                        <option value="fractal">Fractal Patterns</option>
+                    </select>
+                </div>
+
+                <div class="control-section">
+                    <button id="generateBtn" class="btn btn--primary btn--full-width">Generate Texture</button>
+                    <button id="randomBtn" class="btn btn--secondary btn--full-width">Random Parameters</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>Download</h3>
+                    <div class="download-controls">
+                        <button id="downloadPNG" class="btn btn--outline">Download PNG</button>
+                        <button id="downloadJPG" class="btn btn--outline">Download JPG</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Texture Preview -->
+            <section class="texture-preview">
+                <div class="canvas-container">
+                    <canvas id="textureCanvas" width="512" height="512"></canvas>
+                    <div class="loading-overlay hidden" id="loadingOverlay">
+                        <div class="loading-spinner"></div>
+                        <p>Generating texture...</p>
+                    </div>
+                </div>
+                
+                <div class="texture-info">
+                    <div class="info-item">
+                        <span class="info-label">Resolution:</span>
+                        <span id="resolution">512x512</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Generation time:</span>
+                        <span id="generationTime">0ms</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Algorithm:</span>
+                        <span id="currentAlgorithm">Perlin Noise</span>
+                    </div>
+                </div>
+
+                <div class="zoom-controls">
+                    <button id="zoomOut" class="btn btn--sm">Zoom Out</button>
+                    <span id="zoomLevel">100%</span>
+                    <button id="zoomIn" class="btn btn--sm">Zoom In</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
